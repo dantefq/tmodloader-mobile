@@ -1,0 +1,5 @@
+{
+  "excluded_native_libraries": [],
+  "reason": "User restored the full APK analysis scope, including external_wrapper, on 2026-10-19.",
+  "preserve_existing_artifacts": true
+}

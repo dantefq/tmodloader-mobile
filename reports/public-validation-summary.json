@@ -1,0 +1,99 @@
+{
+  "schema": "public-validation-summary-v1",
+  "date": "2026-10-20",
+  "scope": "Restricted prototype scenarios; not general mod compatibility.",
+  "scope_ru": "Ограниченные сценарии прототипа; не общая совместимость модов.",
+  "evidence": "Detailed local evidence is private; this is a generalized summary.",
+  "evidence_ru": "Подробные локальные доказательства закрыты; это обобщённая сводка.",
+  "completed": [
+    "Own JSON/C#/PC item demos in game",
+    "Restricted item sidecar save/restart and separate item-build off/on",
+    "Original ChangeSleepTime: actual sleep/config/off/on/restart",
+    "Combined item/time: item, sleep, item restoration after restart",
+    "Controlled laboratory protection checks",
+    "Original ShorterRespawn isolated checks and native short respawn",
+    "Temporary original item texture: native Unity load, eight RGBA checks, mobile XNA wrapper and observed destruction; no game UI installation",
+    "Checked original texture packet to temporary Unity/XNA/Asset; private typed-array lease across two Draw calls, rollback and disposal; four packet rejection controls",
+    "Original HelicopterParts diagnostic menu preview rendered through SpriteBatch, privately captured and visually reviewed, then removed; inventory rendering not tested",
+    "Live host registry to isolated native new-ID ItemSlot icon; 129 copied tables restored, transfer unload barrier, two cycles and prior-generation rejection with identical resource identities",
+    "Own Android C# registry to separate native game icon lab: GC, four RGBA checks, six invalid-input rejections, copied-table rollback and real teardown ACK before unload; no inventory or original mod execution",
+    "Separate texture companion: exact own Android-tested registry/runtime and native icon in the same game process; GC, rollback/destruction, real ACK, unchanged APK and post-detach save/process/crash checks passed; fixed own fixture only",
+    "Pinned fixed texture profile passed host, isolated Android and separate-process native rendering/teardown; in-process rendering/cleanup completed before a later crash."
+  ],
+  "completed_ru": [
+    "Собственные JSON/C#/ПК-предметы в игре",
+    "Ограниченный sidecar save/restart и off/on отдельной item-сборки",
+    "Исходный ChangeSleepTime: настоящий сон/config/off/on/restart",
+    "Общий item/time: предмет, сон, восстановление предмета после restart",
+    "Контролируемая лабораторная защита",
+    "Исходный ShorterRespawn: изолированные проверки и настоящее короткое возрождение",
+    "Временная исходная текстура: native Unity-загрузка, восемь RGBA-проверок, мобильная XNA-обёртка и наблюдаемое удаление; без установки в игровой UI",
+    "Проверенный исходный пакет в временные Unity/XNA/Asset; lease отдельного типизированного массива между двумя Draw, откат и освобождение; четыре отказа приёмника",
+    "Диагностическое превью исходного HelicopterParts выведено через SpriteBatch меню, захвачено приватно и просмотрено, затем удалено; инвентарная отрисовка не проверена",
+    "Живой host-реестр и отдельная native ItemSlot-иконка нового ID; восстановлены 129 копий таблиц, барьер выгрузки передачи, два цикла и отказ прежнего поколения при одинаковых ресурсах",
+    "Собственный Android C#-реестр и отдельная native-проба иконки игры: GC, четыре RGBA-проверки, шесть отказов неверного ввода, откат копий таблиц и настоящий ACK очистки до выгрузки; без инвентаря и исходного кода мода",
+    "Отдельный texture companion: проверенные на Android собственные реестр/runtime и native-иконка в одном игровом процессе; прошли GC, откат/удаление, настоящий ACK, неизменность APK и проверки сохранений/процесса/crash после отключения; только собственный пример"
+  ],
+  "observed_pending_final_collection": [
+    "Respawn disabled/long-timer/live-adjustment transitions"
+  ],
+  "observed_pending_final_collection_ru": [
+    "Respawn off/long timer/live adjustment до итогового сбора доказательств"
+  ],
+  "pending": [
+    "Combined off/on and sleep repeated after restart",
+    "Respawn saved matrix/restart",
+    "SOTS full lifecycle/static defaults, Android rendering/game integration and persistence",
+    "General mod import/content/persistence",
+    "Standalone launch",
+    "Multiplayer and sustained performance",
+    "General companion/importer texture integration, full inventory/gameplay/persistence, shared texture ownership and SOTS lifecycle on Android"
+  ],
+  "pending_ru": [
+    "Общий off/on и повтор сна после restart",
+    "Respawn: сохранённая матрица/restart",
+    "Полный lifecycle/static defaults SOTS, Android/отрисовка/сохранения",
+    "Общий импорт/контент/сохранения",
+    "Самостоятельный запуск",
+    "Multiplayer и длительные замеры",
+    "Общий companion/импорт текстур, полный инвентарь/gameplay/сохранения, совместное владение ресурсами и lifecycle SOTS на Android"
+  ],
+  "unsupported": [
+    "Arbitrary tmod",
+    "Calamity",
+    "Infernum Mode",
+    "Thorium"
+  ],
+  "static_only": [
+    "Calamity/Infernum dependency and signature analysis"
+  ],
+  "privacy": "No device models, serial numbers, process IDs, personal paths, logs, screenshots or saves included.",
+  "host_only": [
+    "Original SOTS defaults for HelicopterParts/Snakeskin/Curgeon: two snapshots each matched shipped sources",
+    "Three original item textures decoded through bounded TMOD/rawimg reader; no GPU resources created",
+    "PC-compiled item price and inherited Entity field contracts executed against own snapshot API",
+    "Lossless PNG transport matched independent decoder output for original assets and transparency fixtures",
+    "Bounded per-registry CPU image cache, qualified item-resource lookup and unload; own fixtures only",
+    "Generation-bound texture packets with PNG CRC/row/budget checks; three original textures verified on host",
+    "Bounded JavaScript packet receiver: 24 own cases; texture slot lease: 12 own failure/ownership/recovery cases",
+    "Owner-bound texture bindings and transfer/unload acknowledgement guards: 57 image/resource/lifecycle cases; 13 JavaScript table-transaction cases",
+    "Common texture export bridge: 29 managed cases also executed during Android initialization; 18 JavaScript envelope/Base64 cases on host"
+  ],
+  "host_only_ru": [
+    "Исходные настройки HelicopterParts/Snakeskin/Curgeon SOTS: по два снимка совпали с вложенными исходниками",
+    "Три исходные текстуры прочитаны ограниченным TMOD/rawimg-ридером; GPU-ресурсы не создавались",
+    "Контракты цен и полей Entity, собранные против ПК-API, исполнены с собственным API снимков",
+    "PNG-представления исходных ресурсов и примеров прозрачности совпали с независимым декодером",
+    "Ограниченный CPU-кэш реестра, поиск ресурсов предмета и выгрузка; собственные примеры",
+    "Пакеты текстур с поколением, CRC/строками/бюджетами PNG; три оригинальные текстуры проверены на host",
+    "Ограниченный JavaScript-приёмник пакетов: 24 собственных случая; lease слота текстуры: 12 случаев отказов/владения/восстановления",
+    "Привязки текстур к владельцу и ACK передачи/выгрузки: 57 случаев изображений/ресурсов/lifecycle; 13 JavaScript-случаев транзакции таблиц",
+    "Общий адаптер экспорта текстур: 29 managed-случаев также выполнены при инициализации Android; 18 JavaScript-случаев конверта/Base64 на host"
+  ],
+  "known_failures": [
+    "A later in-process pinned-texture run crashed after controller detach with a Mono native thread/signal assertion."
+  ],
+  "unverified_changes": [
+    "Mono-before-Unity companion bootstrap: built and syntax-checked, not executed on Android."
+  ]
+}

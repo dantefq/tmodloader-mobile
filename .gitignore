@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+.tools/
+dist/
+private-build/
+*.apk
+*.jks
+*.keystore
+*.so
+*.dex
+*.class
+*.pk8
+*.pem
+*.dll
+managed/bin/
+managed/obj/
+
+# Local research evidence can contain device identifiers and personal paths.
+reports/*
+!reports/public-validation-summary.json
+notes/

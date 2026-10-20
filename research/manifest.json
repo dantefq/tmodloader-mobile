@@ -1,0 +1,105 @@
+{
+  "format": "sanitized-research-texts-v1",
+  "source_identity": "Analyzed Android IL2CPP build; not original source",
+  "date": "2026-10-20",
+  "artifacts": [
+    {
+      "name": "research-managed-pseudocode-part-01.zip",
+      "files": 18753,
+      "uncompressed_text_bytes": 65177123,
+      "archive_bytes": 21259304,
+      "sha256": "a4bfd55fe7b1f7e82be7492445337e6546310173f52c15fc2997d3b4f62d9886",
+      "profile": "managed-pseudocode",
+      "part": 1,
+      "parts": 5,
+      "download_url": "https://github.com/dantefq/tmodloader-mobile/releases/download/research-checkpoint-2026-10-20/research-managed-pseudocode-part-01.zip"
+    },
+    {
+      "name": "research-managed-pseudocode-part-02.zip",
+      "files": 17696,
+      "uncompressed_text_bytes": 73631152,
+      "archive_bytes": 21436683,
+      "sha256": "689c149c4d3367d6e6671b965d8880f351af15913b0ffb2b5b21804bdd571bce",
+      "profile": "managed-pseudocode",
+      "part": 2,
+      "parts": 5,
+      "download_url": "https://github.com/dantefq/tmodloader-mobile/releases/download/research-checkpoint-2026-10-20/research-managed-pseudocode-part-02.zip"
+    },
+    {
+      "name": "research-managed-pseudocode-part-03.zip",
+      "files": 19376,
+      "uncompressed_text_bytes": 29977045,
+      "archive_bytes": 20126177,
+      "sha256": "5815dc49151940079fc7789b0eb6e711c05753ed3f0e82e2a79b79c732d0c510",
+      "profile": "managed-pseudocode",
+      "part": 3,
+      "parts": 5,
+      "download_url": "https://github.com/dantefq/tmodloader-mobile/releases/download/research-checkpoint-2026-10-20/research-managed-pseudocode-part-03.zip"
+    },
+    {
+      "name": "research-managed-pseudocode-part-04.zip",
+      "files": 21201,
+      "uncompressed_text_bytes": 33246421,
+      "archive_bytes": 20442508,
+      "sha256": "00bad15dec1e96f715d6a0f94904f50fd602a92031be6e65a83ac4f5f9d8136c",
+      "profile": "managed-pseudocode",
+      "part": 4,
+      "parts": 5,
+      "download_url": "https://github.com/dantefq/tmodloader-mobile/releases/download/research-checkpoint-2026-10-20/research-managed-pseudocode-part-04.zip"
+    },
+    {
+      "name": "research-managed-pseudocode-part-05.zip",
+      "files": 16944,
+      "uncompressed_text_bytes": 25861993,
+      "archive_bytes": 15420137,
+      "sha256": "133cef2bea76a8ad1541adff459886e501915c23a8562930706ed02271227f0f",
+      "profile": "managed-pseudocode",
+      "part": 5,
+      "parts": 5,
+      "download_url": "https://github.com/dantefq/tmodloader-mobile/releases/download/research-checkpoint-2026-10-20/research-managed-pseudocode-part-05.zip"
+    },
+    {
+      "name": "research-native-range-pseudocode.zip",
+      "files": 29162,
+      "uncompressed_text_bytes": 27716764,
+      "archive_bytes": 22390588,
+      "sha256": "237abb35970e047c29f18608540de25a1524273b36f44dfc6038353213576d96",
+      "download_url": "https://github.com/dantefq/tmodloader-mobile/releases/download/research-checkpoint-2026-10-20/research-native-range-pseudocode.zip"
+    },
+    {
+      "name": "research-java-decompilation.zip",
+      "files": 952,
+      "uncompressed_text_bytes": 3915081,
+      "archive_bytes": 1013458,
+      "sha256": "97cfc45555a0cee40502f01b5d6245c404dceb0d82b5291a04d1f268eea542ec",
+      "download_url": "https://github.com/dantefq/tmodloader-mobile/releases/download/research-checkpoint-2026-10-20/research-java-decompilation.zip"
+    },
+    {
+      "name": "research-symbol-outlines.zip",
+      "files": 35,
+      "uncompressed_text_bytes": 22801831,
+      "archive_bytes": 2820824,
+      "sha256": "6e485080c8c5cf95deebd0f2afa9933b6bc60f817d318bb505c5411018d4c2a6",
+      "download_url": "https://github.com/dantefq/tmodloader-mobile/releases/download/research-checkpoint-2026-10-20/research-symbol-outlines.zip"
+    },
+    {
+      "name": "research-other-native-pseudocode.zip",
+      "files": 18225,
+      "uncompressed_text_bytes": 46256569,
+      "archive_bytes": 17767228,
+      "sha256": "46951d343cdce41a4c7f30d35428ae396ac61d31672b4a0de8d2737ec78cc6b2",
+      "download_url": "https://github.com/dantefq/tmodloader-mobile/releases/download/research-checkpoint-2026-10-20/research-other-native-pseudocode.zip"
+    },
+    {
+      "name": "research-alternative-pseudocode.zip",
+      "files": 21,
+      "uncompressed_text_bytes": 26227167,
+      "archive_bytes": 1211527,
+      "sha256": "bfbe676fc8d8c55592ffec551dbdb7b3b5c723611153f24c702387816e048f2a",
+      "download_url": "https://github.com/dantefq/tmodloader-mobile/releases/download/research-checkpoint-2026-10-20/research-alternative-pseudocode.zip"
+    }
+  ],
+  "excludes": "Binaries, game assets, databases, saves, raw runtime evidence and private identities.",
+  "privacy_transformation": "Private paths and identifiers removed; excluded wrapper names anonymized.",
+  "semantic_equivalence_verified": false
+}

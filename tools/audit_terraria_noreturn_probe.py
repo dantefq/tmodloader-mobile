@@ -1,0 +1,94 @@
+"""Independent input/result integrity audit for the single conditional hint experiment."""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import struct
+
+def sha(data):
+    return hashlib.sha256(data).hexdigest()
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('lab', type=Path)
+    parser.add_argument('producer', type=Path)
+    parser.add_argument('folder')
+    parser.add_argument('address', type=lambda s: int(s,16))
+    args = parser.parse_args()
+    assert args.folder.startswith('pseudocode-noreturn-') and Path(args.folder).name == args.folder
+    out = args.lab / args.folder
+    result = json.loads((out / 'result.json').read_text())
+    elf = (args.lab / 'native/libil2cpp.so').read_bytes()
+    assert sha(elf) == result['elf_sha256'] == '9bf86a30b01efc6a02b9f7bc31bad1da982ed476a2b71c03b7669f172ca53cd5'
+    assert sha(Path(result['actual_engine_path']).read_bytes()) == result['actual_engine_sha256'] == '1fd85827247f1ff1417fa412db26a53066d050c59017db98dd23ff196751521e'
+    assert sha(args.producer.read_bytes()) == result['script_sha256']
+    maps_path = args.lab / 'hard-switches-v2/switches.json'
+    assert sha(maps_path.read_bytes()) == result['switch_maps_sha256']
+    phoff = struct.unpack_from('<Q', elf, 32)[0]
+    phsize, phcount = struct.unpack_from('<HH', elf, 54)
+    segments = []
+    for index in range(phcount):
+        p = phoff + phsize * index
+        kind, _, offset, va, _, size, _, _ = struct.unpack_from('<IIQQQQQQ', elf, p)
+        if kind == 1:
+            segments.append((offset, va, size))
+    def read(va, size):
+        for offset, start, length in segments:
+            if start <= va and va + size <= start + length:
+                return elf[offset + va - start:offset + va - start + size]
+        raise AssertionError(f'unmapped {va:x}')
+    start, end = int(result['address'], 16), int(result['end_exclusive'], 16)
+    assert start == args.address
+    source_method = next(m for m in json.loads(maps_path.read_text())['methods'] if int(m['address'],16)==start)
+    assert end == int(source_method['end_exclusive'],16)
+    assert sha(read(start, end - start)) == result['function_source_sha256']
+    assert end - start == result['function_source_bytes_verified']
+    method = next(m for m in json.loads(maps_path.read_text())['methods'] if int(m['address'], 16) == start)
+    expected = []
+    for switch in method['switch_candidates']:
+        branch = int(switch['branch'], 16)
+        assert struct.unpack('<I', read(branch, 4))[0] & 0xfffffc1f == 0xd61f0000
+        raw = read(int(switch['table'], 16), switch['width'] * switch['count'])
+        assert raw.hex() == switch['table_raw_bytes']
+        targets = []
+        for item in switch['entries']:
+            target = int(item['target'], 16)
+            value = int.from_bytes(raw[item['index'] * switch['width']:(item['index'] + 1) * switch['width']], 'little')
+            assert target == int(switch['anchor'], 16) + 4 * value
+            assert start <= target < end and read(target, 4).hex() == item['target_raw_bytes']
+            targets.append(hex(target))
+        expected.append({'branch': switch['branch'], 'targets': targets})
+    assert result['applied_hints'] == expected
+    assert result['applied_hint_count'] == len(expected)
+    assert result['applied_entry_count'] == sum(len(x['targets']) for x in expected)
+    assert result['ephemeral_transaction_rolled_back'] is True
+    assert result['saved_project_modified'] is False and result['canonical_journals_modified'] is False
+    assert result['timeout_seconds'] == 600 and result['max_instructions'] == 250000 and result['max_payload_mb'] == 256
+    if result['status'] == 'decompiled_conditional_candidate':
+        path = out / result['file']
+        assert path.resolve().parent == out.resolve()
+        assert sha(path.read_bytes()) == result['c_sha256']
+        assert path.read_text().startswith('/* ADDITIONAL CONDITIONAL MODEL:')
+    else:
+        assert result['status'] == 'decompile_failed'
+        assert not list(out.glob('*.c'))
+    proof_path=args.lab/'nullguard-noreturn-model-20261015/evidence.json'
+    proof=json.loads(proof_path.read_text())
+    assert proof['integrity_passed'] is True and sha(proof_path.read_bytes())==result['noreturn_model_evidence_sha256']
+    assert sha(args.producer.with_name('TerrariaHardSelectedProbe.java').read_bytes())==result['parent_helper_sha256']
+    assert result['outer_annotation_transaction_rolled_back'] is True and result['noreturn_contract_is_assumption'] is True
+    assert result['factory_0x74129c_marked_noreturn'] is False
+    assert {a['address'] for a in result['conditional_noreturn_annotations']}==set(proof['conditional_noreturn_entry_points'])
+    assert all(a['during_no_return'] is True and a['original_no_return_restored'] is True for a in result['conditional_noreturn_annotations'])
+    assert result['additional_ABI_assumptions']==proof['assumptions']
+    audit = {'integrity_passed': True, 'producer_status': result['status'], 'verified_function_bytes': end-start,
+             'verified_switches': len(expected), 'verified_entries': sum(len(x['targets']) for x in expected), 'result_sha256': sha((out / 'result.json').read_bytes()),
+             'auditor_sha256': sha(Path(__file__).read_bytes()), 'semantic_equivalence_verified': False,
+             'global_guard_dominance_verified': False, 'runtime_verified': False,
+             'noreturn_model_evidence_sha256':sha(proof_path.read_bytes()),
+             'note': 'Checks source bytes, map arithmetic and recorded annotation/hint identity; not independent observation of Ghidra internal storage or runtime ABI contract.'}
+    (out / 'audit.json').write_text(json.dumps(audit, indent=2) + '\n')
+    print(json.dumps(audit))
+
+if __name__ == '__main__':
+    main()

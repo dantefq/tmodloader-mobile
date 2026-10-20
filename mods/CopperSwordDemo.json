@@ -1,0 +1,9 @@
+{
+  "format": "terraria-mobile-json-v1",
+  "id": "copper-sword-demo",
+  "name": "Copper Sword Demo",
+  "enabled": true,
+  "items": [
+    { "type": 3507, "name": "Loader Test Sword", "damage": 18 }
+  ]
+}

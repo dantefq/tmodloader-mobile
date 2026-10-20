@@ -1,0 +1,2 @@
+# Optional dependency for the supplemental bounded ARM64 JNI string interpreter.
+capstone==5.0.7
